@@ -10,6 +10,4 @@ def ContactUs_views(request):
     return render(request, 'website/contact.html')
 
 def test_views(request):
-    return render(request, 'website/test.html')
-
-  
+    return render(request, 'website/test.html')  
