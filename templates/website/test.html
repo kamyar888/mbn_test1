@@ -1,20 +1,25 @@
+{% load blog_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="/static/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <style>
-        .h1{
-                font-size: 24px;
-                color: crimson;
-                display: inline-block;
-                margin: 0 , auto;
-        }
+    .h1 {
+        font-size: 24px;
+        color: crimson;
+        display: inline-block;
+        margin: 0 auto;
+    }
 </style>
 <body>
-       <h1>test</h1> 
+    <h1>تعداد پست‌ها: {% Post_Counter %}</h1>
+    {% for post in posts %}
+        <p>{{ post.content|snip }}</p>
+    {% endfor %}
 </body>
 </html>
