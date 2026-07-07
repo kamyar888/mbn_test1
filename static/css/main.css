@@ -3555,6 +3555,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-bottom: 1px solid #eee;
 }
 
+
+
 .widget-wrap .single-sidebar-widget:last-child {
   border-bottom: none;
   margin-bottom: 0px;
@@ -3655,7 +3657,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .popular-post-widget .popular-post-list .thumb img {
-  width: 100%;
+  width: 140px !important;
+  height: 130px !important;
+  
 }
 
 .widget-wrap .popular-post-widget .single-post-list {

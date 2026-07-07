@@ -1,0 +1,12 @@
+{% load static %}
+<div class="single-sidebar-widget search-widget">
+  <form class="search-form" action="{% url 'search' %}" method="GET">
+    <input
+        placeholder="Search Posts"
+        name="s"
+        type="text"
+        value="{{ search_query }}"
+    />
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>

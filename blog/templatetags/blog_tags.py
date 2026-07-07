@@ -7,7 +7,7 @@ def hello():
     slam = Post.objects.filter(status=1).count()
     return slam
 @register.simple_tag(name="posts")
-def function():
+def function(): 
     from blog.models import Post  
     posts = Post.objects.filter(status=1)
     return posts
@@ -28,5 +28,5 @@ def postcategories():
     cat_dict={}
     for name in categories:
         cat_dict[name]=posts.filter(category=name).count()
-    return {"categories":cat_dict}
+    return {"categories":cat_dict} 
     
