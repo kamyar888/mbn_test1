@@ -16,7 +16,10 @@ def blog_home(request, cat_name=None, author_username=None):
         posts = posts.get_page(1)
     except EmptyPage :
         posts = posts.get_page(1)    
-    context = {'posts': posts}
+    context = {
+        'posts': posts,
+        'author_username': author_username,  
+    }
     return render(request, 'blog/blog-home.html', context)
     
 def blog_single(request, pid):

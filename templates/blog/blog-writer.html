@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load blog_tags %}
 
 <div class="single-sidebar-widget user-info-widget">
   <img
@@ -6,7 +6,7 @@
     src="{% static 'D:\mbn_test1\static\img\blog\user-info.jpg' %}"
     alt=""
   />
-  <a href="#"><h4>Kamyar ShishehGaran</h4></a>
+  <a href="{% url 'author' author_username='kamyar' %}"><h4>Kamyar</h4></a>
   <p>Senior blog writer</p>
   <ul class="social-links">
     <li>
