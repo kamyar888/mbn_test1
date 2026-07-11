@@ -11,4 +11,9 @@ class Contact(models.Model):
         ordering = ['created_date']
     def __str__(self):
         return self.name
+class NewsLetter(models.Model):
+    email = models.EmailField(null=True, blank=True)
+    
+    def __str__(self):
+        return self.email    
 # Create your models here.
