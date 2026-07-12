@@ -20,10 +20,7 @@
     <!-- Site Title -->
     <title>Travel</title>
 
-    <link
-      href=""
-      rel="stylesheet"
-    />
+    <link href="" rel="stylesheet" />
     <!--
 			CSS
 			============================================= -->
@@ -62,12 +59,14 @@
       <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
           <div id="logo">
-            <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="" title="" /></a>
+            <a href="{% url 'website:index' %}"
+              ><img src="{% static 'img/logo.png' %}" alt="" title=""
+            /></a>
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <li><a href="{% url 'index' %}">Home</a></li>
-              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'website:index' %}">Home</a></li>
+              <li><a href="{% url 'website:about' %}">About</a></li>
               <li class="menu-has-children">
                 <a href="{% url 'blog-home' %} ">Blog</a>
               </li>
@@ -84,7 +83,7 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="{% url 'contact' %}">Contact</a></li>
+              <li><a href="{% url 'website:contact' %}">Contact</a></li>
             </ul>
           </nav>
           <!-- #nav-menu-container -->
@@ -92,8 +91,7 @@
       </div>
     </header>
     <!-- #header -->
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
 
     <footer class="footer-area section-gap">
       <div class="container">
@@ -115,7 +113,7 @@
               <div class="row">
                 <div class="col">
                   <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="website:index">Home</a></li>
                     <li><a href="#">Feature</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Portfolio</a></li>
@@ -126,7 +124,7 @@
                     <li><a href="#">Team</a></li>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="website:contact">Contact</a></li>
                   </ul>
                 </div>
               </div>
@@ -140,14 +138,13 @@
                 mediocre print and graphic output.
               </p>
               <div id="mc_embed_signup">
-                
                 <form
                   target="_blank"
-                  action="{% url 'newsletter' %}"
+                  action="{% url 'website:newsletter' %}"
                   method="post"
-                  
+                  id="newsletterForm"
                 >
-                {% csrf_token %}
+                  {% csrf_token %}
                   <div class="input-group d-flex flex-row">
                     <input
                       name="email"
@@ -156,8 +153,9 @@
                       onblur="this.placeholder = 'Email Address '"
                       required=""
                       type="email"
+                      id="newsletter_email"
                     />
-                    <button class="btn bb-btn" type="submit">
+                    <button class="btn bb-btn" type="submit" id="newsletterBtn">
                       <span class="lnr lnr-location"></span>
                     </button>
                   </div>
@@ -207,7 +205,39 @@
       </div>
     </footer>
     <!-- End footer Area -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Show messages from server
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "{{ message|safe }}",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#28a745",
+            timer: 3000,
+            timerProgressBar: true,
+          });
+        {% elif message.tags == 'error' %}
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "{{ message|safe }}",
+            confirmButtonText: "Got it",
+            confirmButtonColor: "#dc3545",
+          });
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  });
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>

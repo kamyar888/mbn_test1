@@ -37,12 +37,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     "blog",
     "website",
     "blog.templatetags.blog_tags",
-    "website.templatetags.website_tags"
-
+    "website.templatetags.website_tags",
+    "django.contrib.humanize",
+    "django_extensions",
+    "django.contrib.sitemaps",
+    "robots",
+    "debug_toolbar"
 ]
+
+SITE_ID = 2
+
+ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_HOST = False
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -52,7 +62,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
+
+
 
 ROOT_URLCONF = "mbn_test1.urls"
 
@@ -115,6 +128,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
